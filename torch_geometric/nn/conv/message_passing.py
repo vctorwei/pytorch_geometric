@@ -323,8 +323,8 @@ class MessagePassing(torch.nn.Module):
                         edge_mask = edge_mask[self.__loop_mask__]
                         loop = edge_mask.new_ones(size[0])
                         edge_mask = torch.cat([edge_mask, loop], dim=0)
-                    assert out.size(self.node_dim) == edge_mask.size(0)
-                    out = out * edge_mask.view([-1] + [1] * (out.dim() - 1))
+                    #assert out.size(self.node_dim) == edge_mask.size(0)
+                    #out = out * edge_mask.view([-1] + [1] * (out.dim() - 1))
 
                 aggr_kwargs = self.inspector.distribute('aggregate', coll_dict)
                 for hook in self._aggregate_forward_pre_hooks.values():
